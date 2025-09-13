@@ -20,8 +20,11 @@ st.title("Manufacturing Quality Rating Predictor")
 st.write("This application predicts the quality rating of manufactured products based on various features.")
 
 # Load dataset
-
-df = pd.read_csv('manufacturing_xgr.csv')
+try:
+    df = pd.read_csv('manufacturing_xgr.csv')
+except Exception as e:
+    st.error(f"❌ Error loading data: {e}")
+    st.stop()
 
 temperature = st.text_input("Enter your Temperature (°C):")
 pressure = st.text_input("Enter your Pressure (kPa):")
@@ -35,3 +38,4 @@ if st.button("Predict"):
     prediction = model.predict(input_data)
 
     st.write(f"The predicted Quality Rating is: {prediction[0]:.2f}")
+
