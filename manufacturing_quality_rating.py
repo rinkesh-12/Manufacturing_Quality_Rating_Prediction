@@ -9,7 +9,7 @@ import os
 model_path = os.path.join(os.path.dirname(__file__), "manufacturing_quality_rating_model.pkl")
 try:
     with open(model_path, "rb") as f:
-        model = pickle.load(f)   # ✅ consistent variable name
+        model = pk.load(f)   # ✅ consistent variable name
 except Exception as e:
     st.error(f"❌ Error loading model: {e}")
     st.stop()
